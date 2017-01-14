@@ -1,27 +1,22 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "declaration": false,
-    "removeComments": true,
-    "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
+    "noEmitHelpers": true,
     "pretty": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noFallthroughCasesInSwitch": true
+    "sourceMap": true,
+    "lib": ["es5", "dom"],
+    "strictNullChecks": false
   },
   "exclude": [
-    "node_modules",
-    "dist",
-    "typings/browser.d.ts",
-    "typings/browser",
-    "src"
+    "node_modules"
   ],
-  "compileOnSave": false
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "forkChecker": true,
+    "useCache": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
 }
