@@ -1,187 +1,82 @@
-[![Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](http://www.repostatus.org/badges/latest/unsupported.svg)](http://www.repostatus.org/#unsupported)
+<a href="https://ultimateangular.com" target="_blank"><img src="https://toddmotto.com/img/ua.png"></a>
 
-*Please note that this repository is no longer supported. I have personally switched to [angular-cli](https://github.com/angular/angular-cli). While it is still in beta (as of this writing), the tool has the official support from the Angular team and has the best minds working on it. I would like to thank the angular-cli team for all their efforts.*
+# Angular Fundamentals Seed
 
-# Introduction
+> This is the seed project for the [Angular Fundamentals](https://ultimateangular.com/courses/#angular-2) course by [Todd Motto](https://twitter.com/toddmotto).
 
-A seed project for Angular 2 apps using Sass. Derived from [mgechev/angular2-seed](https://github.com/mgechev/angular2-seed).
+## Project Setup and Tooling
 
-It is something similar to the Angular Quick Start but does the entire build with gulp.
+### Tools
 
-`angular2-seed-sass` provides the following features:
+This course is recorded with the following tools, you can optionally follow along using the same, or your favourite text editor/IDE and browser.
 
-- Allows you to painlessly update the seed tasks of your already existing project.
-- Ready to go, statically typed build system using gulp for working with TypeScript.
-- Production and development builds.
-- Sample unit tests with Jasmine and Karma including code coverage via [istanbul](https://gotwarlost.github.io/istanbul/).
-- End-to-end tests with Protractor.
-- Development server with Livereload.
-- Following the [best practices for your application’s structure](https://github.com/mgechev/angular2-style-guide).
-- Manager of your type definitions using [typings](https://github.com/typings/typings).
-- Has autoprefixer and sass-lint support.
-- Basic Service Worker, which implements "Cache then network strategy".
-- Sass-enabled styling.
+*Text editor*: Visual Studio Code, you can [download it here](http://code.visualstudio.com) for both Mac, Windows and Linux.
+*Browser*: Google Chrome, you can [download it here](https://www.google.com/chrome)
 
-# How to start
+### Prerequisites
 
-**Note** that this seed project requires node v4.x.x or higher and npm 2.14.7.
+Please make sure that you have the following installed:
 
-You must have `ts-node` installed as global. If you don't, use:
+* Install the _latest version_ of [Node.js](http://nodejs.org) (Mac or Windows)
+  * Mac users can optionally `brew install node` if they have [brew](http://brew.sh) installed
+
+* Node Sass, you _may_ need it if you haven't already got it installed:
 
 ```bash
-npm install -g ts-node
+npm install -g node-sass
 ```
 
-In order to start using seed:
+### Project Install
+
+To grab the seed project, either Fork this repo or [click here to download](https://github.com/UltimateAngular/angular-fundamentals-seed/archive/master.zip) the `.zip` folder and extract the files wherever you like on your machine.
+
+#### Step 1: Package Manager
+
+To install the project dependencies, you will need to install `yarn`. To install `yarn`, run the following in your terminal:
 
 ```bash
-git clone --depth 1 https://github.com/archfirst/angular2-seed-sass.git
-cd angular2-seed-sass
-# install the project's dependencies
-npm install
-# watches your files and uses livereload by default
-npm start
-# api document for the app
-npm run docs
-
-# dev build
-npm run build.dev
-# prod build
-npm run build.prod
+npm install -g yarn
 ```
 
-_Does not rely on any global dependencies._
-
-# Table of Content
-
-- [Introduction](#introduction)
-- [How to start](#how-to-start)
-- [Table of Content](#table-of-content)
-- [Configuration](#configuration)
-- [How to extend?](#how-to-extend)
-- [Running tests](#running-tests)
-- [Contributing](#contributing)
-- [Directory Structure](#directory-structure)
-- [Change Log](#change-log)
-- [License](#license)
-
-# Configuration
-
-Default application server configuration
-
-```javascript
-var PORT             = 5555;
-var LIVE_RELOAD_PORT = 4002;
-var DOCS_PORT        = 4003;
-var APP_BASE         = '/';
-```
-
-Configure at runtime
+Mac users can alternatively use `brew` to install `yarn`.
 
 ```bash
-npm start -- --port 8080 --reload-port 4000 --base /my-app/
+brew update
+brew install yarn
 ```
 
-# How to extend?
+If you experience any issues when installing/using `yarn` you can checkout the installation instructions [here](https://yarnpkg.com/en/docs/install).
 
-Visit the [Wiki page](https://github.com/mgechev/angular2-seed/wiki) of the project.
+##### Step 2: Project Dependencies
 
-# Running tests
+Now that we have a package manager, we can install the project dependencies. You can do this by running:
 
 ```bash
-npm test
-
-# Debug - In two different shell windows
-npm run build.test.watch      # 1st window
-npm run karma.start           # 2nd window
-
-# code coverage (istanbul)
-# auto-generated at the end of `npm test`
-# view coverage report:
-npm run serve.coverage
-
-# e2e (aka. end-to-end, integration) - In three different shell windows
-# Make sure you don't have a global instance of Protractor
-
-# npm run webdriver-update <- You will need to run this the first time
-npm run webdriver-start
-npm run serve.e2e
-npm run e2e
-
-# e2e live mode - Protractor interactive mode
-# Instead of last command above, you can use:
-npm run e2e.live
-```
-You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
-
-# Contributing
-
-Please see the [CONTRIBUTING](https://github.com/mgechev/angular2-seed/blob/master/.github/CONTRIBUTING.md) file for guidelines.
-
-# Directory Structure
-
-```
-.
-├── LICENSE
-├── README.md
-├── gulpfile.ts                <- configuration of the gulp tasks
-├── karma.conf.js              <- configuration of the test runner
-├── package.json               <- dependencies of the project
-├── protractor.conf.js         <- e2e tests configuration
-├── src                        <- source code of the application
-│   ├── home
-│   │   └── components
-│   ├── index.html
-│   ├── main.ts
-│   ├── shared
-│   │   └── services
-│   │       ├── name-list...
-│   │       └── name-list...
-│   └── sw.js                  <- sample service worker
-├── test-main.js               <- testing configuration
-├── tools
-│   ├── README.md              <- build documentation
-│   ├── config
-│   │   ├── project.config.ts  <- configuration of the specific project
-│   │   ├── seed.config....
-│   │   └── seed.config.ts     <- generic configuration of the seed project
-│   ├── config.ts              <- exported configuration (merge both seed.config and project.config, project.config overrides seed.config)
-│   ├── debug.ts
-│   ├── manual_typings
-│   │   ├── project            <- manual ambient typings for the project
-│   │   │   └── sample.pac...
-│   │   └── seed               <- seed manual ambient typings
-│   │       ├── merge-stre..
-│   │       └── slash.d.ts
-│   ├── tasks                  <- gulp tasks
-│   │   ├── project            <- project specific gulp tasks
-│   │   │   └── sample.tas...
-│   │   └── seed               <- seed generic gulp tasks. They can be overriden by the project specific gulp tasks
-│   ├── utils                  <- build utils
-│   │   ├── project            <- project specific gulp utils
-│   │   │   └── sample_util...
-│   │   ├── project.utils.ts
-│   │   ├── seed               <- seed specific gulp utils
-│   │   │   ├── clean.ts
-│   │   │   ├── code_change...
-│   │   │   ├── server.ts
-│   │   │   ├── tasks_tools.ts
-│   │   │   ├── template_loc...
-│   │   │   ├── tsproject.ts
-│   │   │   └── watch.ts
-│   │   └── seed.utils.ts
-│   └── utils.ts
-├── tsconfig.json              <- configuration of the typescript project (ts-node, which runs the tasks defined in gulpfile.ts)
-├── tslint.json                <- tslint configuration
-├── typings                    <- typings directory. Contains all the external typing definitions defined with typings
-├── typings.json
-└── appveyor.yml
+yarn install
 ```
 
-# Change Log
+This will install our dependencies for running our Angular application.
 
-You can follow the [Angular 2 change log here](https://github.com/angular/angular/blob/master/CHANGELOG.md).
+#### Step 3: Running the project
 
-# License
+During development, the project is built using `webpack-dev-server`. This provides a local development server as well as having webpack recompile our app when a file changes. The project will also automatically refresh the page whenever we make changes.
 
-MIT
+To start the project in development, run:
+
+```
+yarn start
+```
+
+This will output some information about the project (such as the TypeScript version and build progress). Once you see "build completed", you are ready to code!
+
+Open your browser to [localhost:4000](http://localhost:4000) to start running the code.
+
+### Project Tooling
+
+The project uses `webpack` to build and compile all of our assets. This will do the following for us: 
+
+- Compile all our TypeScript code into JavaScript (starting from `main.ts` and branching outwards from imported files)
+- Bundle all our JavaScript into one file to use
+- Allow us to use SASS for our component's CSS files
+- Provide the polyfills needed to run our app in all modern browsers
+- Mock a JSON backend using [json-server](https://github.com/typicode/json-server)
