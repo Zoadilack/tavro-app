@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-
 import { routeComponents, routeProviders, routes } from './login.routing';
+
+import { LoginComponent } from './+login/login.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { routeComponents, routeProviders, routes } from './login.routing';
     declarations: [
         ...routeComponents,
     ],
+    exports: [
+        LoginComponent,
+    ]
 })
-export class LoginModule {
-
-}
+export class LoginModule {}

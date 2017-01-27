@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 
 import { routes } from './app.routing';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
+import { HomeModule } from './home/home.module';
+import { NotFoundModule } from './not-found/not-found.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   imports: [
@@ -16,15 +16,15 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    HomeModule,
+    NotFoundModule,
+    LoginModule    
   ],
   bootstrap: [
     AppComponent
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
-    NotFoundComponent,
-    LoginComponent
   ]
 })
 export class AppModule {}

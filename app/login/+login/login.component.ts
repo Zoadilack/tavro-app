@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 
 @Component({
-    selector: 'login',
+    selector: 'login-form',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
 })
