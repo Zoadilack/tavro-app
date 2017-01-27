@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -11,7 +13,7 @@ html, body {
   padding: 0;
   background: #fff;
   -webkit-font-smoothing: antialiased;
-  color: #545e6f;
+  color: $font-color-base;
 }
 
 img {
@@ -27,7 +29,7 @@ ol {
   padding: 0;
 }
 a {
-  color: #9f72e6;
+  color: $color-primary;
   text-decoration: none;
 }
 input,
@@ -48,7 +50,7 @@ input[type=password] {
 }
 button {
   cursor: pointer;
-  background: #9f72e6;
+  background: $color-primary;
   border: 0;
   border-radius: 2px;
   padding: 5px 10px;
@@ -57,7 +59,7 @@ button {
 }
 button:disabled {
   cursor: not-allowed;
-  background: #b598e4;
+  background: $color-primary;
 }
 p {
   margin: 5px 0;
