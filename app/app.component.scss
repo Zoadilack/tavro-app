@@ -1,0 +1,52 @@
+@import '../assets/css/variables';
+
+$navbar-height: 60px;
+$navbar-index: 10;
+$user-area-index: 15;
+
+$gutter-md: 12px;
+
+body {
+    margin-top: $navbar-height + $gutter-md;
+}
+
+.navbar {
+    position: absolute;
+    z-index: $navbar-index;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $navbar-height;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 $gutter-md;
+    background: $color-primary;
+
+    nav {
+        padding: 0 $gutter-md;
+
+        a {
+            margin-right: $gutter-md;
+        }
+    }
+
+    a {
+        color: white;
+    }
+}
+
+.logo {
+    width: 25%;
+}
+
+.user-area {
+    position: absolute;
+    top: 0;
+    right: $gutter-md;
+    display: flex;
+    align-items: center;
+    height: $navbar-height;
+
+    z-index: $user-area-index;
+}
