@@ -6,6 +6,10 @@ $user-area-index: 15;
 
 $gutter-md: 12px;
 
+body {
+    margin-top: $navbar-height + $gutter-md;
+}
+
 .navbar {
     position: absolute;
     z-index: $navbar-index;

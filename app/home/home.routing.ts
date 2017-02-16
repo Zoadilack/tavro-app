@@ -1,7 +1,7 @@
 import { Provider } from '@angular/core';
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './+home/home.component';
+import { HomeComponent } from './containers/home.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },

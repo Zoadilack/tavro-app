@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { CurrentUser } from '../services/user.service';
+
 import { routeComponents, routeProviders, routes } from './login.routing';
 
-import { LoginComponent } from './+login/login.component';
+import { LoginComponent } from './containers/login.component';
 
 @NgModule({
     imports: [
@@ -13,6 +15,7 @@ import { LoginComponent } from './+login/login.component';
     ],
     providers: [
         ...routeProviders,
+        CurrentUser
     ],
     declarations: [
         ...routeComponents,

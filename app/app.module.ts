@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { routes } from './app.routing';
 import { AppComponent } from './app.component';
@@ -18,7 +19,8 @@ import { LoginModule } from './login/login.module';
     FormsModule,
     HomeModule,
     NotFoundModule,
-    LoginModule    
+    LoginModule,
+    HttpModule
   ],
   bootstrap: [
     AppComponent
