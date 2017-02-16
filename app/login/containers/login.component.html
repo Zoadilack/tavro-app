@@ -14,11 +14,12 @@
             placeholder="Password"
             #password>
     </div>  
-    <button (click)="processLogin(username.value, password.value)">Login</button>
+    <button (click)="login(username.value, password.value)">Login</button>
 </div>
 
 <div *ngIf="isAuth && user">
-    You are currently logged in as <strong>{{ user.username }}</strong>.  
-
+    <div>
+        You are currently logged in as <strong>{{ user.username }}</strong>.  
+    </div>
     <button (click)="logout()">Logout</button>
 </div>

@@ -4,12 +4,11 @@
     </div>
     <nav>
         <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
     </nav>
     <div class="user-area">
-        <a routerLink="/login" routerLinkActive="active">Login</a>
+        {{ current.isAuthed }}
+        <a *ngIf="!current.isAuthed" routerLink="/login" routerLinkActive="active">Login</a>
+        <div *ngIf="current.isAuthed"> {{current.user.person.first_name | async}} </div>
     </div>
 </div>
 

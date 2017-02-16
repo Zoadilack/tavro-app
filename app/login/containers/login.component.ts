@@ -1,7 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { CurrentUser } from '../../services/user.service';
+import { UserService } from '../../services/user.service';
+import { AuthenticationService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
 
 import { User } from '../../models/user.model';
 
@@ -11,38 +14,27 @@ import { User } from '../../models/user.model';
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-    public user: User;
-    public isAuth: boolean = false;
+    public loading: boolean = false;
 
     constructor( 
-        private userService: CurrentUser, 
+        private userService: UserService,
+        private router: Router,
+        private authService: AuthenticationService,
+        private alertService: AlertService,         
     ) {
-        if (this.userService.verifyToken()) {
-            this.isAuth = true;
-            this.userService.getCurrentUser().subscribe(response => {
-                this.user = response;
-            });
-        } 
     }
 
-    public processLogin(username: string, password: string) {
-        this.userService
-            .loginUser(username, password)
-            .map((response: boolean) => response)
+    public login(username: string, password: string) {
+        this.loading = true;
+        this.authService
+            .login(username, password)
+            // .map((response: boolean) => response)
             .subscribe(response => { 
-                this.isAuth = true;
-
-                if (response) {
-                    this.userService.getCurrentUser().subscribe(response => {
-                        this.user = response;
-                    });
-                }
+                //this.router.navigate(['dashboard']);
             });
     }
 
     private logout() {
-        this.userService.logout();
-        this.isAuth = false;
+        this.authService.logout();
     }
-
 }
