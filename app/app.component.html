@@ -6,9 +6,8 @@
         <a routerLink="/home" routerLinkActive="active">Home</a>
     </nav>
     <div class="user-area">
-        {{ current.isAuthed }}
         <a *ngIf="!current.isAuthed" routerLink="/login" routerLinkActive="active">Login</a>
-        <div *ngIf="current.isAuthed"> {{current.user.person.first_name | async}} </div>
+        <div *ngIf="current.isAuthed"> {{current.user.person.first_name}} </div>
     </div>
 </div>
 

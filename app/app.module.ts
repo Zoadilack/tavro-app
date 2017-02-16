@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { routes } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { LoginModule } from './login/login.module';
 
@@ -18,6 +19,7 @@ import { LoginModule } from './login/login.module';
     RouterModule.forRoot(routes),
     FormsModule,
     HomeModule,
+    DashboardModule,
     NotFoundModule,
     LoginModule,
     HttpModule

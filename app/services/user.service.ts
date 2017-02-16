@@ -8,8 +8,19 @@ export class UserService {
     constructor(private http: Http) { }
 
     public getCurrentUser() {
-        console.log('setting user');
-        return this.http.get(global.api + 'user', { headers: {'Authorization': 'Bearer ' + localStorage.getItem('JWT')}})
+        // var token = localStorage.getItem('JWT').toString();
+        // let headers = new Headers({ 'Authorization': 'Bearer' + token})
+        // let options = new RequestOptions({ headers: headers });
+        // console.log('wtf');
+
+        // return this.http
+        //     .get('//api.tavro.dev/api/v1/user', options)
+        //     .map(response => {
+        //         console.log('wtf');
+        //         localStorage.setItem('currentUser', JSON.stringify(response.json()['data']));
+        //     });
+
+        return this.http.get(global.api + 'user', this.jwt())
             .map((response: Response) => {
                 console.log('setting user');
                 localStorage.setItem('currentUser', JSON.stringify(response.json()['data']));
@@ -23,8 +34,11 @@ export class UserService {
 
     private jwt() {
         // create authorization header with jwt token
-        let token = localStorage.getItem('JWT');
+        let token = localStorage.getItem('JWT').toString();
+        console.log('token', token);
+
         if (token) {
+            console.log('token check');
             let headers = new Headers({ 'Authorization': 'Bearer ' + token });
             return new RequestOptions({ headers: headers });
         }

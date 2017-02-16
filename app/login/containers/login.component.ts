@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -24,13 +24,19 @@ export class LoginComponent {
     ) {
     }
 
+    private ngOnInit() {
+        if (this.userService.isAuthed) {
+            this.router.navigate(['dashboard']);
+        }
+    }
+
     public login(username: string, password: string) {
         this.loading = true;
         this.authService
             .login(username, password)
             // .map((response: boolean) => response)
             .subscribe(response => { 
-                //this.router.navigate(['dashboard']);
+                this.router.navigate(['dashboard']);
             });
     }
 
