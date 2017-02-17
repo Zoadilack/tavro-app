@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { UserService } from '../../services/user.service';
@@ -32,11 +32,13 @@ export class LoginComponent {
 
     public login(username: string, password: string) {
         this.loading = true;
-        this.authService
-            .login(username, password)
-            // .map((response: boolean) => response)
-            .subscribe(response => { 
-                this.router.navigate(['dashboard']);
+        this.authService.login(username, password)
+            .subscribe(data => { 
+                setTimeout(() => this.router.navigate(['dashboard']), 400);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
             });
     }
 

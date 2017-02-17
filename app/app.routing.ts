@@ -1,5 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthenticationGuard } from './services/auth.guard';
+
 import { HomeComponent } from './home/containers/home.component';
 import { LoginComponent } from './login/containers/login.component';
 import { DashboardComponent } from './dashboard/containers/dashboard.component';
@@ -12,7 +14,8 @@ export const routes: Routes = [
   },
   { 
     path: 'dashboard', 
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthenticationGuard],
   },
   { 
     path: 'login', 

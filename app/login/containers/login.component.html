@@ -1,7 +1,5 @@
 <div *ngIf="!isAuth">
-
     <p>Please login below</p>
-
     <div>
         <input
             type="text" 
@@ -14,7 +12,13 @@
             placeholder="Password"
             #password>
     </div>  
-    <button (click)="login(username.value, password.value)">Login</button>
+    <button 
+        [class.disabled]="loading" 
+        [disabled]="loading"
+        (click)="login(username.value, password.value)">
+        <span *ngIf="!loading">Login</span>
+        <span *ngIf="loading">Logging in...</span>
+    </button>
 </div>
 
 <div *ngIf="isAuth && user">

@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+import { AuthenticationGuard } from './services/auth.guard';
+
 import { routes } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
@@ -29,6 +31,9 @@ import { LoginModule } from './login/login.module';
   ],
   declarations: [
     AppComponent,
+  ],
+  providers: [
+    AuthenticationGuard    
   ]
 })
 export class AppModule {}

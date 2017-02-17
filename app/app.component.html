@@ -7,7 +7,11 @@
     </nav>
     <div class="user-area">
         <a *ngIf="!current.isAuthed" routerLink="/login" routerLinkActive="active">Login</a>
-        <div *ngIf="current.isAuthed"> {{current.user.person.first_name}} </div>
+        <div *ngIf="current.isAuthed"> 
+            <a (click)="auth.logout()">
+                {{current.user.person.first_name}} 
+            </a>
+        </div>
     </div>
 </div>
 

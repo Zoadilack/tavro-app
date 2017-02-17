@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions, URLSearchParams, Request  } from '@angular/http';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/mergeMap';
@@ -14,6 +15,7 @@ export class AuthenticationService {
     
     constructor(
         private http: Http,
+        private router: Router,
         public user: UserService
     ) { }
 
@@ -22,12 +24,9 @@ export class AuthenticationService {
         body.set('username', username);
         body.set('password', password);
 
-        return this.http
-            .post(global.api + 'auth', body)
+        return this.http.post(global.api + 'auth', body)
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
                 const authToken = response.json();
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('JWT', authToken['token']);
             })
             .flatMap((response) => this.user.getCurrentUser());
@@ -35,7 +34,8 @@ export class AuthenticationService {
     
 
     public logout() {
-        // remove user from local storage to log user out
         localStorage.removeItem('JWT');
+        localStorage.removeItem('currentUser');
+        setTimeout(() => this.router.navigate(['login']), 400);
     }
 }

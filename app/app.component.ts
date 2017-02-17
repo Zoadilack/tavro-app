@@ -1,6 +1,7 @@
 import { Component, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
+import { AuthenticationService } from './services/auth.service';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -12,7 +13,8 @@ import { UserService } from './services/user.service';
 export class AppComponent {
 
   constructor(
-    public current: UserService
+    public current: UserService,
+    public auth: AuthenticationService,
   ) {  
 
   }
