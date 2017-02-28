@@ -1,14 +1,17 @@
 
 // Colors
 $color-primary: #03a9f4;
-
+$dark-gray: #424242;
+$off-white: #F5F5F5;
 
 // Basics HTML elements and
 $font-color-base: #545e6f;
 
 
 // Dimensions (margins, paddings, sizing, media queries)
-
+$gutter-md: 12px;
+$gutter-sm: $gutter-md / 2;
+$gutter-lg: $gutter-md * 2;
 
 
 // Other stuff

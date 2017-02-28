@@ -1,6 +1,10 @@
 import { Component, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
+import { AuthenticationService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import global = require('./services/globals');
+
 @Component({
   selector: 'tavro-app',
   styleUrls: ['../assets/css/index.scss', 'app.component.scss'],
@@ -8,9 +12,14 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title: string;
+  public date = new Date();
+  public version = global.version;
 
-  constructor() {
-    this.title = 'tavro';
+  constructor(
+    public current: UserService,
+    public auth: AuthenticationService,
+  ) {  
+
   }
+
 }

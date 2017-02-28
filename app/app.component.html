@@ -1,16 +1,28 @@
-<div class="navbar">
+<div class="navbar" *ngIf="current.isAuthed()">
     <div class="logo">
         <a routerLink="/">tavro</a>
     </div>
     <nav>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/burn-tracker" routerLinkActive="active">Burn Tracker</a>
+        <a routerLink="/sales-projector" routerLinkActive="active">Sales Projector</a>
+        <a routerLink="/forecasting" routerLinkActive="active">Forecasting</a>
+        <a routerLink="/equity-calculator" routerLinkActive="active">Equity Calculator</a>
     </nav>
     <div class="user-area">
-        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <div> 
+            <a (click)="auth.logout()">
+                {{current.user.person.first_name}} 
+            </a>
+        </div>
     </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class="wrapper">
+    <router-outlet></router-outlet>
+</div>
+
+<footer>
+    <div class="flex-50">&copy; {{ date.getFullYear() }} Tavro, Inc.  A Zoadilack product.</div>
+    <div class="flex-50 text-right">{{ 'v' + version }}</div>
+</footer>

@@ -4,10 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+
+import { AuthenticationGuard } from './services/auth.guard';
 
 import { routes } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { LoginModule } from './login/login.module';
 
@@ -18,6 +22,8 @@ import { LoginModule } from './login/login.module';
     RouterModule.forRoot(routes),
     FormsModule,
     HomeModule,
+    DashboardModule,
+    MaterialModule,    
     NotFoundModule,
     LoginModule,
     HttpModule
@@ -27,6 +33,9 @@ import { LoginModule } from './login/login.module';
   ],
   declarations: [
     AppComponent,
+  ],
+  providers: [
+    AuthenticationGuard    
   ]
 })
 export class AppModule {}

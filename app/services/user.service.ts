@@ -1,61 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response, RequestOptions, URLSearchParams, Request } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-import { Observable } from 'rxjs/Observable';
-
-import { User } from '../models/user.model';
-
-import 'rxjs/add/operator/map';
+import global = require('./globals');
 
 @Injectable()
-export class CurrentUser {
-    private authToken: string;
-    public baseRoute: string = '//api.tavro.dev/api/v1/';
-    private headers: Headers = new Headers();
+export class UserService {
+    constructor(private http: Http) { }
 
-    constructor( 
-        private http: Http,
-    ) {
-        if (localStorage.getItem('JWT')) {
-            this.authToken = localStorage.getItem('JWT').toString();
-            this.headers.append('Authorization', `Bearer ${this.authToken}`);   
+    public user: Object = JSON.parse(localStorage.getItem('currentUser'));
+    public isAuthed():boolean {
+        if(localStorage.getItem('JWT') === null || localStorage.getItem('currentUser') === null) {
+            return false;
         }
-    }
+        return true;
+    };
 
-    public loginUser(_username: string, _password: string): Observable<Boolean> {
-        let body = new URLSearchParams();
-        body.set('username', _username);
-        body.set('password', _password);
-
-        return this.http
-            .post(this.baseRoute + 'auth', body)
+    public getCurrentUser() {
+        return this.http.get(global.api + 'user', this.jwt())
             .map((response: Response) => {
-                const authToken = response.json();
-                localStorage.setItem('JWT', authToken['token']);
-                this.authToken = localStorage.getItem('JWT').toString();
-                this.headers.append('Authorization', `Bearer ${this.authToken}`);                   
-                return true;
+                localStorage.setItem('currentUser', JSON.stringify(response.json()['data']));
             });
     }
 
-    public getCurrentUser() {
-        var token = localStorage.getItem('JWT').toString();
-        let options = new RequestOptions({ headers: this.headers });
+    private jwt() {
+        let token = localStorage.getItem('JWT').toString();
 
-        return this.http
-            .get(this.baseRoute + 'user', options)
-            .map(response => response.json()['data']);
-    }
-
-    public verifyToken(): Boolean {
-        if (localStorage.getItem('JWT')) {
-            return true;
+        if (token) {
+            let headers = new Headers({ 'Authorization': 'Bearer ' + token });
+            return new RequestOptions({ headers: headers });
         }
-
-        return false;
-    }
-
-    public logout() {
-        localStorage.removeItem('JWT');
     }
 }
