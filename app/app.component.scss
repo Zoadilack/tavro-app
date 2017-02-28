@@ -3,11 +3,17 @@
 $navbar-height: 60px;
 $navbar-index: 10;
 $user-area-index: 15;
-
-$gutter-md: 12px;
+$footer-height: 40px;
 
 body {
-    margin-top: $navbar-height + $gutter-md;
+    margin: 0;
+    margin-top: $navbar-height;
+    background-color: $off-white;
+}
+
+.wrapper {
+    padding: 50px;
+    min-height: calc(100vh - #{$navbar-height} - #{$footer-height});
 }
 
 .navbar {
@@ -25,9 +31,21 @@ body {
 
     nav {
         padding: 0 $gutter-md;
+        display: flex;
 
         a {
-            margin-right: $gutter-md;
+            padding: 22px $gutter-lg;
+            text-transform: uppercase;
+            font-size: 12px;
+
+            &.active {
+                background-color: rgba(white, 0.2);
+            }
+
+            &:focus, 
+            &:hover {
+                background-color: rgba(white, 0.3);
+            }
         }
     }
 
@@ -38,6 +56,7 @@ body {
 
 .logo {
     width: 25%;
+    text-transform: uppercase;
 }
 
 .user-area {
@@ -49,4 +68,17 @@ body {
     height: $navbar-height;
 
     z-index: $user-area-index;
+}
+
+footer {
+    height: 40px;
+    display: flex;
+    background-color: $dark-gray;
+    color: white;
+    width: 100%;
+    padding: 15px;
+
+    div {
+        font-size: 10px;
+    }
 }

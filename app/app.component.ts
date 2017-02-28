@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 import { AuthenticationService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import global = require('./services/globals');
 
 @Component({
   selector: 'tavro-app',
@@ -11,6 +12,8 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
+  public date = new Date();
+  public version = global.version;
 
   constructor(
     public current: UserService,
