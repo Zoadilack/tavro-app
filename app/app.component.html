@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" *ngIf="current.isAuthed()">
     <div class="logo">
         <a routerLink="/">tavro</a>
     </div>
@@ -6,8 +6,7 @@
         <a routerLink="/home" routerLinkActive="active">Home</a>
     </nav>
     <div class="user-area">
-        <a *ngIf="!current.isAuthed" routerLink="/login" routerLinkActive="active">Login</a>
-        <div *ngIf="current.isAuthed"> 
+        <div> 
             <a (click)="auth.logout()">
                 {{current.user.person.first_name}} 
             </a>
@@ -16,3 +15,4 @@
 </div>
 
 <router-outlet></router-outlet>
+

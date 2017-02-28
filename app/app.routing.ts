@@ -10,7 +10,7 @@ import { NotFoundComponent } from './not-found/+not-found/not-found.component';
 export const routes: Routes = [
   { 
     path: '', 
-    component: HomeComponent
+    component: HomeComponent,
   },
   { 
     path: 'dashboard', 
@@ -20,10 +20,9 @@ export const routes: Routes = [
   { 
     path: 'login', 
     component: LoginComponent,
-    data: { title: 'Login' } 
   },
   { 
       path: '**', 
-      component: NotFoundComponent 
+      component: NotFoundComponent,
   }
 ];

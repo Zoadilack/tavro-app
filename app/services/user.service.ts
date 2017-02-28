@@ -8,7 +8,12 @@ export class UserService {
     constructor(private http: Http) { }
 
     public user: Object = JSON.parse(localStorage.getItem('currentUser'));
-    public isAuthed:boolean = localStorage.getItem('JWT') ? true : false;
+    public isAuthed():boolean {
+        if(localStorage.getItem('JWT') === null || localStorage.getItem('currentUser') === null) {
+            return false;
+        }
+        return true;
+    };
 
     public getCurrentUser() {
         return this.http.get(global.api + 'user', this.jwt())

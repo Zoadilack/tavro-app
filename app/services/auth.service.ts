@@ -36,6 +36,6 @@ export class AuthenticationService {
     public logout() {
         localStorage.removeItem('JWT');
         localStorage.removeItem('currentUser');
-        setTimeout(() => this.router.navigate(['login']), 400);
+        this.router.navigate(['/login']);
     }
 }

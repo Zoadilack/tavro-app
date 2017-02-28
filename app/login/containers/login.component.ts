@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MaterialModule } from '@angular/material';
+
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { UserService } from '../../services/user.service';
@@ -13,7 +15,7 @@ import { User } from '../../models/user.model';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     public loading: boolean = false;
 
     constructor( 
@@ -24,17 +26,19 @@ export class LoginComponent {
     ) {
     }
 
-    private ngOnInit() {
-        if (this.userService.isAuthed) {
-            this.router.navigate(['dashboard']);
+    public ngOnInit() {
+        if (this.userService.isAuthed()) {
+            this.router.navigate(['/dashboard']);
         }
     }
 
     public login(username: string, password: string) {
         this.loading = true;
         this.authService.login(username, password)
-            .subscribe(data => { 
-                setTimeout(() => this.router.navigate(['dashboard']), 400);
+            .subscribe(() => { 
+                console.log('jwt', localStorage.getItem('JWT'));
+                console.log('is authed', this.userService.isAuthed());
+                setTimeout(() => this.router.navigate(['/dashboard']), 800);
             },
             error => {
                 this.alertService.error(error);
