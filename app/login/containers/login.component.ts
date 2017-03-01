@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authService.login(username, password)
             .subscribe(() => { 
-                console.log('jwt', localStorage.getItem('JWT'));
-                console.log('is authed', this.userService.isAuthed());
+                // arbitrary delay to ensure user fully set
                 setTimeout(() => this.router.navigate(['/dashboard']), 800);
             },
             error => {
