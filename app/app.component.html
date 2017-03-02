@@ -9,7 +9,7 @@
         <a routerLink="/forecasting" routerLinkActive="active">Forecasting</a>
         <a routerLink="/equity-calculator" routerLinkActive="active">Equity Calculator</a>
     </nav>
-    <div class="user-area">
+    <div class="user-area" *ngIf="current.user">
         <div> 
             <a (click)="auth.logout()">
                 {{current.user.person.first_name}} 
