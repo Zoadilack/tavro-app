@@ -1,0 +1,55 @@
+@import '~@angular/material/core/theming/all-theme';
+@import 'variables';
+
+@include mat-core();
+
+$tavro-app-primary: mat-palette($mat-blue);
+$tavro-app-accent:  mat-palette($mat-grey, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$tavro-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$tavro-app-theme: mat-light-theme($tavro-app-primary, $tavro-app-accent, $tavro-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($tavro-app-theme);
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font: 300 15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.align {
+  &-center-center {
+    justify-content: center;
+    align-content: center;
+  }
+}
+
+md-input-container {
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.mat-simple-snackbar-action {
+  color: $color-danger !important;
+}

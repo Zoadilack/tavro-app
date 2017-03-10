@@ -31,11 +31,18 @@ export class AuthenticationService {
             })
             .flatMap((response) => this.user.getCurrentUser());
     }
-    
 
     public logout() {
         localStorage.removeItem('JWT');
         localStorage.removeItem('currentUser');
         this.router.navigate(['/login']);
+    }
+
+    public sendReset(username: string) {
+        let body = JSON.stringify({'email': username});
+        return this.http.post(global.api + 'auth/forgot', body)
+            .map((response: Response) => {
+                return response;
+            });
     }
 }

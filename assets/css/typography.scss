@@ -1,3 +1,4 @@
+@import 'variables';
 
 h1 {
   font-size: 30px;
@@ -25,5 +26,13 @@ p {
 }
 
 .text-right {
-  text-align:right;
+  text-align: right;
+}
+
+.text-sm {
+  font-size: $font-small;
+}
+
+.text-muted {
+  color: rgba(black, 0.5);
 }

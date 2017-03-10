@@ -1,0 +1,47 @@
+@import '../variables';
+@import './alignment';
+
+@mixin selection-control-base($name, $height: $selection-control-size) {
+    :host {
+        display: block;
+        position: relative;
+    }
+
+    .bui-label {
+        @include not-selectable();
+
+        font-family: $font-family-industry;
+        font-size: 16px;
+        color: $color-input-label-fg;
+
+        display: inline-flex;
+        align-items: center;
+
+        padding: $baseline-grid / 2;
+        cursor: pointer;
+    }
+
+    .bui-#{$name} {
+        position: relative;
+        display: inline-block;
+
+        margin-right: $baseline-grid * 2;
+    }
+
+    // Hide native input, it is used for accesibility but not actually shown.
+    input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+    }
+
+    .bui-#{$name}-label {
+        line-height: $height;
+        margin-right: $baseline-grid;
+    }
+
+    :host(.bui-#{$name}-focused) label {
+        outline: 1px solid $color-primary;
+    }
+}

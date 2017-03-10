@@ -1,9 +1,12 @@
-@import '../assets/css/variables';
+@import '../assets/css/index';
 
 $navbar-height: 60px;
 $navbar-index: 10;
 $user-area-index: 15;
 $footer-height: 40px;
+
+$nav-highlight: lighten($color-primary,5%);
+$nav-hover: lighten($color-primary,10%);
 
 body {
     margin: 0;
@@ -37,14 +40,32 @@ body {
             padding: 22px $gutter-lg;
             text-transform: uppercase;
             font-size: 12px;
+            position: relative;
 
             &.active {
-                background-color: rgba(white, 0.2);
+                background-color: $nav-highlight;
+
+                &::after {
+                    content:'';
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -10px;
+                    width: 0;
+                    height: 0;
+                    border-top: solid 6px $nav-highlight;
+                    border-left: solid 10px transparent;
+                    border-right: solid 10px transparent;
+                }
             }
 
             &:focus, 
             &:hover {
-                background-color: rgba(white, 0.3);
+                background-color: $nav-hover;
+
+                &::after {
+                    border-top-color: $nav-hover;
+                }
             }
         }
     }

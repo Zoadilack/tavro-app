@@ -9,7 +9,8 @@ import { UserService } from '../services/user.service';
 
 import { routeComponents, routeProviders, routes } from './login.routing';
 
-import { LoginComponent } from './containers/login.component';
+import { LoginComponent } from './+login/login.component';
+import { ForgotPasswordDialog } from './+login/forgot-password/forgot-password-dialog.component';
 
 @NgModule({
     imports: [
@@ -25,9 +26,11 @@ import { LoginComponent } from './containers/login.component';
     ],
     declarations: [
         ...routeComponents,
+        ForgotPasswordDialog,
     ],
     exports: [
         LoginComponent,
-    ]
+    ],
+    entryComponents: [ForgotPasswordDialog],
 })
 export class LoginModule {}

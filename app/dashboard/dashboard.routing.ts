@@ -1,7 +1,7 @@
 import { Provider } from '@angular/core';
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from './containers/dashboard.component';
+import { DashboardComponent } from './+dashboard/dashboard.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent },

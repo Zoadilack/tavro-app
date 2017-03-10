@@ -1,12 +1,15 @@
 
 // Colors
 $color-primary: #03a9f4;
+$color-danger: lighten(red, 5%);
 $dark-gray: #424242;
 $off-white: #F5F5F5;
 
 // Basics HTML elements and
 $font-color-base: #545e6f;
 
+$font-size-base: 12px;
+$font-small: 10px;
 
 // Dimensions (margins, paddings, sizing, media queries)
 $gutter-md: 12px;
@@ -15,3 +18,13 @@ $gutter-lg: $gutter-md * 2;
 
 
 // Other stuff
+// Layout
+// ------------------------------
+
+$baseline-grid:            8px !default;
+$layout-gutter-width:      ($baseline-grid * 2) !default;
+
+$layout-breakpoint-xs:     600px !default;
+$layout-breakpoint-sm:     960px !default;
+$layout-breakpoint-md:     1280px !default;
+$layout-breakpoint-lg:     1920px !default;
