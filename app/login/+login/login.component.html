@@ -76,7 +76,7 @@
                     md-raised-button
                     [class.disabled]="loading" 
                     [disabled]="loading"
-                    (click)="register(newUsername.value, newPassword.value)">
+                    (click)="register(newName.value, newUsername.value, newPassword.value)">
                     <span *ngIf="!registering">Register</span>
                     <span *ngIf="registering">Registering...</span>
                 </button>     

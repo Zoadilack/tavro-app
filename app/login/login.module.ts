@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
 import { routeComponents, routeProviders, routes } from './login.routing';
 
 import { LoginComponent } from './+login/login.component';
+import { SignupComponent } from './+signup/signup.component';
 import { ForgotPasswordDialog } from './+login/forgot-password/forgot-password-dialog.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ForgotPasswordDialog } from './+login/forgot-password/forgot-password-d
     ],
     exports: [
         LoginComponent,
+        SignupComponent
     ],
     entryComponents: [ForgotPasswordDialog],
 })

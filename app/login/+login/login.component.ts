@@ -54,4 +54,5 @@ export class LoginComponent implements OnInit {
     private logout() {
         this.authService.logout();
     }
+
 }
