@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { AuthenticationGuard } from './services/auth.guard';
@@ -14,6 +14,8 @@ import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { LoginModule } from './login/login.module';
+
+import { HttpService } from './services/http.service';
 
 @NgModule({
   imports: [
@@ -34,8 +36,18 @@ import { LoginModule } from './login/login.module';
   declarations: [
     AppComponent,
   ],
+  // providers: [
+  //   AuthenticationGuard
+  // ]
   providers: [
-    AuthenticationGuard    
-  ]
+    AuthenticationGuard,
+    {
+      provide: HttpService,
+      useFactory: (backend: XHRBackend, options: RequestOptions) => {
+        return new HttpService(backend, options);
+      },
+      deps: [XHRBackend, RequestOptions]
+    }
+  ],  
 })
 export class AppModule {}

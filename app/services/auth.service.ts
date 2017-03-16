@@ -27,13 +27,13 @@ export class AuthenticationService {
         return this.http.post(global.api + 'auth', body)
             .map((response: Response) => {
                 const authToken = response.json();
-                localStorage.setItem('JWT', authToken['token']);
+                localStorage.setItem('auth_token', authToken['token']);
             })
             .flatMap((response) => this.user.getCurrentUser());
     }
 
     public logout() {
-        localStorage.removeItem('JWT');
+        localStorage.removeItem('auth_token');
         localStorage.removeItem('currentUser');
         this.router.navigate(['/login']);
     }
@@ -42,7 +42,20 @@ export class AuthenticationService {
         let body = JSON.stringify({'email': username});
         return this.http.post(global.api + 'auth/forgot', body)
             .map((response: Response) => {
-                return response;
+                return JSON.parse(response['_body']);
             });
     }
+
+    // public jwt() {
+    //     let token = localStorage.getItem('JWT').toString();
+    //     let headers = new Headers();
+
+    //     if (token) {
+    //         headers.set('Authorization', 'Bearer ' + token);
+    //     } else {
+    //         headers.set('Unauthorized', '');
+    //     }
+
+    //     return new RequestOptions({ headers: headers });
+    // }    
 }

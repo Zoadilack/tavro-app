@@ -42,8 +42,7 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authService.login(username, password)
             .subscribe(() => { 
-                // arbitrary delay to ensure user fully set
-                setTimeout(() => this.router.navigate(['/dashboard']), 800);
+                this.router.navigate(['/dashboard']);
             },
             error => {
                 this.alertService.error(error);
