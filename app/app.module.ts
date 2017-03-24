@@ -12,6 +12,7 @@ import { routes } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AccountModule } from './account/account.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { LoginModule } from './login/login.module';
 
@@ -25,6 +26,7 @@ import { HttpService } from './services/http.service';
     FormsModule,
     HomeModule,
     DashboardModule,
+    AccountModule,
     MaterialModule,    
     NotFoundModule,
     LoginModule,
