@@ -1,3 +1,52 @@
-<h1>Hello there, stay a while!</h1>
-<p>Would you like to create a new Account?</p>
 
+<div class="flex align-center-center">
+    <div class="description flex-25">
+        <h2>Account Signup</h2>
+        <h5>Track your financials, protect your future, &amp; match with investors.</h5>
+        <p>Sign up your organization now.</p>
+        <div class="flex align-center-center">
+            <a routerLink="">terms</a>
+            <a routerLink="">pricing</a>
+            <a routerLink="">privacy</a>
+            <a routerLink="">support</a>
+        </div>
+    </div>
+    <div class="flex-25 account-signup-form">
+        
+        <div>
+            <md-input-container>
+                <input
+                    mdInput
+                    type="text" 
+                    placeholder="Name"
+                    #name>
+            </md-input-container>            
+        </div>
+        <div>
+            <md-input-container>
+                <input
+                    mdInput
+                    type="text" 
+                    placeholder="Description"
+                    #body>
+            </md-input-container>            
+        </div>
+        <div>
+            
+                <md-select>
+                    <md-option *ngFor="let i of accountTypes" [value]="i.value" [disabled]="i.disabled">{{i.name}}</md-option>
+                </md-select>
+                      
+        </div>
+        
+        <button class="btn-lg btn-success"
+            md-raised-button
+            [class.disabled]="loading" 
+            [disabled]="loading"
+            (click)="register(newUsername.value, newPassword.value)">
+            <span *ngIf="!registering">Create Account</span>
+            <span *ngIf="registering">Creating new account...</span>
+        </button>     
+        
+    </div>
+</div>

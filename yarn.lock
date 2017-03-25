@@ -22,7 +22,7 @@
   version "4.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.0.0-beta.1.tgz#190f8720321c56ec0bd34a71ab95d1502990845d"
 
-"@angular/material@^2.0.0-beta.1":
+"@angular/material@^2.0.0-beta.2":
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-2.0.0-beta.2.tgz#65ee8733990347b7518b7f42113e02e069dc109b"
 
@@ -89,6 +89,10 @@ align-text@^0.1.1, align-text@^0.1.3:
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+
+angular2-jwt@^0.1.28:
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/angular2-jwt/-/angular2-jwt-0.1.28.tgz#4896dbb88ec561382cf485ff9eaa6f96a683f4d1"
 
 angular2-template-loader@0.6.0:
   version "0.6.0"
