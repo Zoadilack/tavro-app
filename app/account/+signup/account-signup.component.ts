@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit, Injectable } from '@angular/core';
+import { NgModule, Component, AfterViewInit, OnInit, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterialModule, MdDialog } from '@angular/material';
 
@@ -16,13 +16,20 @@ import { AccountType } from '../../models/account_type.model';
 
 import {Observable} from 'rxjs/Rx';
 
+import {BrowserModule} from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms';
+
 @Component({
     selector: 'account-signup',
     templateUrl: './account-signup.component.html',
     styleUrls: ['./account-signup.component.scss'],
 })
 
-@Injectable()
+@NgModule({
+  imports: [ BrowserModule, FormsModule, MaterialModule.forRoot() ],
+  declarations: [ AccountSignupComponent ],
+  bootstrap: [ AccountSignupComponent ]
+})
 
 export class AccountSignupComponent {
 
@@ -51,7 +58,7 @@ export class AccountSignupComponent {
         // Get all AccountTypes
          this.getAccountTypes()
             .subscribe(
-                //accountTypes => this.accountTypes = accountTypes, //Bind to view
+                res => this.accountTypes = res, //Bind to view
                 err => {
                     // Log errors if any
                     console.log(err);
@@ -63,7 +70,7 @@ export class AccountSignupComponent {
          // ...using get request
          return this.http.get(global.api + 'account_types')
         // ...and calling .json() on the response to return data
-            .map((res:Response) => res.json())
+            .map((res:Response) => res.json()['data'])
             //...errors if any
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
