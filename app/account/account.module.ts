@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
+import { FormsModule, FormGroup, ReactiveFormsModule, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 import { routeComponents, routeProviders, routes } from './account.routing';
 
 import { AccountSignupComponent } from './+signup/account-signup.component';
@@ -11,7 +13,9 @@ import { AccountSignupComponent } from './+signup/account-signup.component';
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        MaterialModule
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         ...routeProviders,
