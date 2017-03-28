@@ -10,7 +10,7 @@ export class UserService {
 
     public user: Object = JSON.parse(localStorage.getItem('currentUser'));
     public isAuthed():boolean {
-        if(localStorage.getItem('JWT') === null || localStorage.getItem('currentUser') === null) {
+        if(localStorage.getItem('auth_token') === null || localStorage.getItem('currentUser') === null) {
             return false;
         }
         return true;
