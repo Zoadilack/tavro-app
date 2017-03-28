@@ -69,7 +69,7 @@ export class AccountSignupComponent {
         
     }
 
-    signup(account: Account, isValid: boolean) {
+    private signup(account: Account, isValid: boolean) {
         
         this.submitted = true; // set form submit to true
 
@@ -94,19 +94,21 @@ export class AccountSignupComponent {
 
     }
 
-    createAccount(account) : Observable<Account[]> {
+    private createAccount(account) : Observable<Account[]> {
 
         let data = JSON.stringify(account);
         console.log(data);
 
         return this.http.post(global.api + 'accounts', data)
-        // ...and calling .json() on the response to return data
+            // ...and calling .json() on the response to return data
+            // @TODO: something with the response here... probably redirect to their
+            // Account settings page to define "stuff"
             .map((res:Response) => res.json()['data'])
             //...errors if any
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    loadAccountTypes() {
+    private loadAccountTypes() {
         // Get all AccountTypes
          this.getAccountTypes()
             .subscribe(
@@ -117,7 +119,7 @@ export class AccountSignupComponent {
                 });
     }
 
-    getAccountTypes() : Observable<AccountType[]> {
+    private getAccountTypes() : Observable<AccountType[]> {
 
          // ...using get request
          return this.http.get(global.api + 'account_types')

@@ -38,7 +38,7 @@
                 <span *ngIf="registering">Creating new account...</span>
             </button>     
 
-            <small class="text-" [hidden]="accountSignupForm.controls.name.valid || (accountSignupForm.controls.name.pristine && !submitted)">
+            <small [hidden]="accountSignupForm.controls.name.valid || (accountSignupForm.controls.name.pristine && !submitted)">
                 Name is required (minimum 5 characters).
             </small>
 
