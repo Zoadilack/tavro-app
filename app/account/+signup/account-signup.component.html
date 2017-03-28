@@ -25,7 +25,7 @@
                 </md-input-container>            
             </div>
             <div class="form-row">
-                <md-select formControlName="account_type" placeholder="Type of business">
+                <md-select formControlName="type" placeholder="Type of business">
                     <md-option *ngFor="let type of accountTypes" [value]="type.id" [disabled]="type.disabled">{{type.name}}</md-option>
                 </md-select>
             </div>

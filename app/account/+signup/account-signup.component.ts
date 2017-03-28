@@ -64,8 +64,7 @@ export class AccountSignupComponent {
         this.accountSignupForm = new FormGroup({
             name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             body: new FormControl('', [<any>Validators.required]),
-            account_type: new FormControl('', [<any>Validators.required]),
-            user: new FormControl('', [<any>Validators.required]),
+            type: new FormControl('', [<any>Validators.required])
         });
         
     }
@@ -75,11 +74,36 @@ export class AccountSignupComponent {
         this.submitted = true; // set form submit to true
 
         account.user = JSON.parse(this.currentUser).id;
-        
+
         // check if model is valid
         // if valid, call API to save Account
         console.log(account, isValid);
 
+        if(isValid) {
+            this.createAccount(account)
+            .subscribe(
+                response => {
+                    console.log('createAccount', response);
+                },
+                error => {
+                    // Log errors if any
+                    console.log(error);
+                }
+            );
+        }
+
+    }
+
+    createAccount(account) : Observable<Account[]> {
+
+        let data = JSON.stringify(account);
+        console.log(data);
+
+        return this.http.post(global.api + 'accounts', data)
+        // ...and calling .json() on the response to return data
+            .map((res:Response) => res.json()['data'])
+            //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     loadAccountTypes() {
