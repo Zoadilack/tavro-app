@@ -21,8 +21,7 @@ export class ForgotPasswordDialog {
     this.loading = true;
     this.authService.sendReset(username)
         .subscribe((response) => { 
-          let result = JSON.parse(response['_body']);
-          this.snackBar.open(result.message, 'X', {duration:15000});
+          this.snackBar.open(response.message, 'X', {duration:15000});
           this.loading = false;
         },
         error => {
