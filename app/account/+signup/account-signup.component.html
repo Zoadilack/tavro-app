@@ -9,7 +9,7 @@
         </div>
         <div class="flex-50 account-signup-form">
             
-            <div>
+            <div class="form-row">
                 <md-input-container>
                     <input
                         mdInput
@@ -17,28 +17,19 @@
                         placeholder="Account Name"
                         formControlName="name"
                         #name>
-                        <small [hidden]="accountSignupForm.controls.name.valid || (accountSignupForm.controls.name.pristine && !submitted)">
-                            Name is required (minimum 5 characters).
-                        </small>
                 </md-input-container>            
             </div>
-            <div>
+            <div class="form-row">
                 <md-input-container>
                     <textarea formControlName="body" mdInput placeholder="Describe your business" name="body" required md-maxlength="500" #body></textarea>
-                    <small [hidden]="accountSignupForm.controls.body.valid || (accountSignupForm.controls.body.pristine && !submitted)">
-                        Please describe your business.
-                    </small>
                 </md-input-container>            
             </div>
-            <div>
-                <md-select formConrolName="account_type" name="account_type" mdInput placeholder="Type of business" #accountType>
-                    <md-option *ngFor="let i of accountTypes" [value]="i.value" [disabled]="i.disabled">{{i.name}}</md-option>
+            <div class="form-row">
+                <md-select formControlName="account_type" placeholder="Type of business">
+                    <md-option *ngFor="let type of accountTypes" [value]="type.id" [disabled]="type.disabled">{{type.name}}</md-option>
                 </md-select>
             </div>
-            <div>
-                <input type="hidden" name="user" formControlName="user" ng-model="currentUser" value="{{ currentUser.id }}" #user>
-            </div>
-            
+
             <button class="btn-lg btn-success"
                 md-raised-button
                 [class.disabled]="loading" 
@@ -46,6 +37,14 @@
                 <span *ngIf="!registering">Create Account</span>
                 <span *ngIf="registering">Creating new account...</span>
             </button>     
+
+            <small class="text-" [hidden]="accountSignupForm.controls.name.valid || (accountSignupForm.controls.name.pristine && !submitted)">
+                Name is required (minimum 5 characters).
+            </small>
+
+            <small [hidden]="accountSignupForm.controls.body.valid || (accountSignupForm.controls.body.pristine && !submitted)">
+                Please describe your business.
+            </small>
             
         </div>
         </div>

@@ -57,6 +57,8 @@ export class AccountSignupComponent {
             this.router.navigate(['/login']);
         }
 
+        const currentUser = localStorage.getItem('currentUser');
+
         this.loadAccountTypes();
 
         this.accountSignupForm = new FormGroup({
@@ -68,12 +70,15 @@ export class AccountSignupComponent {
         
     }
 
-    signup(model: Account, isValid: boolean) {
+    signup(account: Account, isValid: boolean) {
+        
         this.submitted = true; // set form submit to true
 
+        account.user = JSON.parse(this.currentUser).id;
+        
         // check if model is valid
         // if valid, call API to save Account
-        console.log(model, isValid);
+        console.log(account, isValid);
 
     }
 
