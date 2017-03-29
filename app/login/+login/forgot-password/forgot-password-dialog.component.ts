@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MdDialog, MdSnackBar } from '@angular/material';
 
 import { AuthenticationService } from '../../../services/auth.service';
 import { AlertService } from '../../../services/alert.service';
@@ -15,13 +15,15 @@ export class ForgotPasswordDialog {
     private authService: AuthenticationService,
     private alertService: AlertService,
     public snackBar: MdSnackBar,
+    public dialog: MdDialog,
   ) {}
 
   public sendReset(username: string) {
     this.loading = true;
     this.authService.sendReset(username)
-        .subscribe((response) => { 
+        .subscribe(response => { 
           this.snackBar.open(response.message, 'X', {duration:15000});
+          this.dialog.closeAll();
           this.loading = false;
         },
         error => {
