@@ -8,6 +8,7 @@ import { FormsModule, FormGroup, ReactiveFormsModule, FormControl, FormBuilder, 
 import { routeComponents, routeProviders, routes } from './account.routing';
 
 import { AccountSignupComponent } from './+signup/account-signup.component';
+import { UserAccountsComponent } from './+user-accounts/user-accounts.component';
 
 @NgModule({
     imports: [

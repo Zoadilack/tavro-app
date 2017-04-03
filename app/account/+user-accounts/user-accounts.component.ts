@@ -12,11 +12,11 @@ import { Account } from '../../models/account.model';
 import { User } from '../../models/user.model';
 
 @Component({
-    selector: 'login-form',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    selector: 'user-accounts',
+    templateUrl: './user-accounts.component.html',
+    styleUrls: ['./user-accounts.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class UserAccountsComponent implements OnInit {
     public loading: boolean = false;
 
     public currentUser: User;
