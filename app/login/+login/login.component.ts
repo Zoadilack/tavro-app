@@ -42,11 +42,13 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authService.login(username, password)
             .subscribe((user: User) => { 
-                console.log('user', user);
-                if (user.user_accounts.length > 1) {
-                    this.router.navigate(['/accounts/user_accounts']);    
+                if (!user.user_accounts) {
+                    console.log('no user_accounts');
+                    this.router.navigate(['/dashboard']);
+                } else {
+                    console.log('user accounts?');
+                    this.router.navigate(['/accounts/user_accounts']);
                 }
-                this.router.navigate(['/dashboard']);
             },
             error => {
                 this.alertService.error(error);

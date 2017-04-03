@@ -19,6 +19,8 @@ import { User } from '../../models/user.model';
 export class LoginComponent implements OnInit {
     public loading: boolean = false;
 
+    public currentUser: User;
+
     constructor( 
         private userService: UserService,
         private router: Router,
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
     public ngOnInit() {
-        let user = <User>JSON.parse(localStorage.getItem('current_user'));
-        this.accounts = user.user_accounts;
+        this.currentUser = this.userService.user;
+        this.accounts = this.currentUser.user_accounts;
     }
 }

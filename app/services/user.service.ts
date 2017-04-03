@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { HttpService } from './http.service';
 
+import { User } from '../models/user.model';
+
 import global = require('./globals');
 
 @Injectable()
 export class UserService {
     constructor(private http: HttpService) { }
 
-    public user: Object = JSON.parse(localStorage.getItem('currentUser'));
+    public user: User = JSON.parse(localStorage.getItem('currentUser'));
     public isAuthed():boolean {
         if(localStorage.getItem('auth_token') === null || localStorage.getItem('currentUser') === null) {
             return false;
