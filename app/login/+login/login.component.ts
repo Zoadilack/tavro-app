@@ -41,8 +41,14 @@ export class LoginComponent implements OnInit {
     public login(username: string, password: string) {
         this.loading = true;
         this.authService.login(username, password)
-            .subscribe(() => { 
-                this.router.navigate(['/dashboard']);
+            .subscribe((user: User) => { 
+                if (!user.user_accounts) {
+                    console.log('no user_accounts');
+                    this.router.navigate(['/dashboard']);
+                } else {
+                    console.log('user accounts?');
+                    this.router.navigate(['/accounts/user_accounts']);
+                }
             },
             error => {
                 this.alertService.error(error);

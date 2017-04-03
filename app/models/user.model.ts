@@ -1,4 +1,4 @@
-
+import { Account } from './account.model';
 
 export class User {
     username: string;
@@ -16,5 +16,6 @@ export class User {
         state: string,
         suffix: string,
         zip: number,
-    }
+    };
+    user_accounts: Account[];
 }
