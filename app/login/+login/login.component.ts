@@ -41,7 +41,11 @@ export class LoginComponent implements OnInit {
     public login(username: string, password: string) {
         this.loading = true;
         this.authService.login(username, password)
-            .subscribe(() => { 
+            .subscribe((user: User) => { 
+                console.log('user', user);
+                if (user.user_accounts.length > 1) {
+                    this.router.navigate(['/accounts/user_accounts']);    
+                }
                 this.router.navigate(['/dashboard']);
             },
             error => {

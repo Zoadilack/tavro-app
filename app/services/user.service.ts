@@ -17,26 +17,10 @@ export class UserService {
     };
 
     public getCurrentUser() {
-        console.log(this.http.head.toString());
-
         return this.http.get(global.api + 'user')
             .map((response: Response) => {
                 localStorage.setItem('currentUser', JSON.stringify(response.json()['data']));
+                return response.json()['data'];
             });
     }
-
-    // private jwt() {
-    //     let token = localStorage.getItem('JWT').toString();
-    //     let headers = new Headers();
-
-    //     if (token) {
-    //         headers.set('Authorization', 'Bearer ' + token);
-    //         // let headers = new Headers({ 'Authorization': 'Bearer ' + token });
-    //         return new RequestOptions({ headers: headers });
-    //     } else {
-    //         headers = new Headers({});
-    //     }
-
-    //     return new RequestOptions({ headers: headers });
-    // }
 }

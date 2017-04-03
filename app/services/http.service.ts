@@ -25,7 +25,6 @@ export class HttpService extends Http {
     // we have to add the token to the url object
       url.headers.set('Authorization', `Bearer ${token}`);
     }
-    console.log('url options', url, options);
     return super.request(url, options).catch(this.catchAuthError(this));
   }
 
