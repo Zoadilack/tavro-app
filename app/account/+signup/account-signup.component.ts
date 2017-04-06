@@ -62,7 +62,7 @@ export class AccountSignupComponent {
         this.loadAccountTypes();
 
         this.accountSignupForm = new FormGroup({
-            name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(3)]),
             body: new FormControl('', [<any>Validators.required]),
             type: new FormControl('', [<any>Validators.required])
         });

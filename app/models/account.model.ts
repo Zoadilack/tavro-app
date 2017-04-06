@@ -7,4 +7,5 @@ export class Account {
     body?: string;
     status?: number;
     account_type?: number;
+    user: number;
 }
