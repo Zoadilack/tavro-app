@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/dashboard']);
                 } else {
                     console.log('user accounts?');
-                    this.router.navigate(['/accounts/user_accounts']);
+                    this.router.navigate(['/accounts']);
                 }
             },
             error => {

@@ -1,9 +1,10 @@
 
 
 export class Account {
+    id: number;
     name: string;
-    body: string;
-    status: number;
-    user: number;
-    account_type: number;
+    name_clean?: string;
+    body?: string;
+    status?: number;
+    account_type?: number;
 }

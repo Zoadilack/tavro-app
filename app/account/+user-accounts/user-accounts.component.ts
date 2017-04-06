@@ -15,6 +15,7 @@ import { User } from '../../models/user.model';
     selector: 'user-accounts',
     templateUrl: './user-accounts.component.html',
     styleUrls: ['./user-accounts.component.scss'],
+    providers: [Account]
 })
 export class UserAccountsComponent implements OnInit {
     public loading: boolean = false;
@@ -29,6 +30,7 @@ export class UserAccountsComponent implements OnInit {
 
     public ngOnInit() {
         this.currentUser = this.userService.user;
-        this.accounts = this.currentUser.user_accounts;
+        console.log('this.currentUser', this.currentUser);
+        //this.accounts = this.currentUser.user_accounts;
     }
 }
