@@ -5,8 +5,8 @@ import { AccountSignupComponent } from './+signup/account-signup.component';
 import { UserAccountsComponent } from './+user-accounts/user-accounts.component';
 
 export const routes: Routes = [
-    { path: '/signup', component: AccountSignupComponent },
-    { path: '/accounts', component: UserAccountsComponent },
+    { path: 'signup', component: AccountSignupComponent },
+    { path: 'accounts', component: UserAccountsComponent },
 ];
 
 // Array of routing components to be declared in the module.
